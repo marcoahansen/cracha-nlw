@@ -3,7 +3,7 @@ const socialMediaLinks = {
   youtube: 'MarcoAurelioHansen',
   facebook: 'marcoaureliohansen',
   instagram: 'marcoahansen',
-  twitter: 'marcoahansen'
+  linkedin: '/in/marco-hansen-993ba736/'
 }
 
 function changeSocialMediaLinks() {
