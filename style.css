@@ -6,8 +6,7 @@ html,
 body {
   --black: hsl(240, 6%, 13%);
   --grey: hsl(240, 9%, 89%);
-
-  height: 100%;
+  background-color: #121214;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -15,6 +14,8 @@ body {
 body {
   display: grid;
   place-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 main {
@@ -23,7 +24,7 @@ main {
   justify-content: center;
   width: 100vw;
   min-height: 812px;
-  height: 100vw;
+  height: 100vh;
 }
 
 .container {
@@ -37,13 +38,52 @@ main {
   position: relative;
   text-align: center;
   color: var(--grey);
+  z-index: 2;
+  height: 610px;
+  width: 360px;
+}
+
+main::before {
+  background: url('images/degrade.svg') no-repeat center top;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
 }
 
 .background-container {
   top: 0;
   left: 0;
-  background: url("images/backgroundDesktop.svg");
   position: absolute;
+}
+
+.container::before {
+  background-color: black;
+  content: "";
+  position: absolute;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 20px;
+  z-index: 1;
+  width: 80px;
+  height: 8px;
+}
+
+.container::after {
+  background: rgb(255,0,142);
+  background: linear-gradient(120deg, rgba(255,0,142,1) 60%, rgba(255,205,30,1) 100%);
+  content: "";
+  position: absolute;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  bottom: 47%;
+  width: 64px;
+  height: 100%;
+  z-index: 1;
+
 }
 
 .avatar {
@@ -111,29 +151,16 @@ ul li img {
   width: 100%;
 }
 
-@media only screen and (min-width: 760px) {
-  body {
-    background-color: #121214;
-    width: 100vw;
-    height: 100vh;
-  }
-  main {
-    /* background: url(images/backgroundDesktop.svg) no-repeat center/cover; */
-    width: 100vw;
-    min-height: 712px;
-    height: 100vh;
-
-    position: absolute;
-    top: -2.4rem;
-  }
-
+@media only screen and (max-width: 768px) {
   .container {
-    height: 610px;
-    width: 360px;
+    width: 100vw;
+    height: 100vh;
   }
-
-  ul {
-    margin-top: 2rem;
+  main::before, .container::before, .container::after {
+    display: none;
+  }
+  .background-container {
+    width: 100vw;
   }
 }
 
